@@ -9,31 +9,258 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"
+      integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
-  <body class="bg-gray-900">
-    <header class="flex w-full h-20 justify-between items-center px-4">
-      <div class="flex items-center gap-4">
-        <h1 class="text-2xl font-bold text-white">전제스</h1>
-        <span class="text-gray-200 text-sm">개발자</span>
-      </div>
-      <i class="fa-solid fa-bars text-white text-2xl cursor-pointer"></i>
+  <body class="bg-white dark:bg-gray-900">
+    <header
+      class="fixed w-full h-[72px] px-4 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md"
+    >
+      <nav class="flex h-full justify-between items-center">
+        <div class="flex items-center gap-4">
+          <h1 class="text-2xl font-bold dark:text-white">전제스</h1>
+          <span class="text-sm text-gray-400 dark:text-gray-200"
+            >웹 개발자</span
+          >
+        </div>
+        <i
+          id="side-menu-open"
+          class="fa-solid fa-bars text-2xl cursor-pointer dark:text-white md:hidden"
+        ></i>
+      </nav>
     </header>
-    <main class="container w-full max-w-4xl mx-auto px-6 py-12">
+    <aside
+      class="fixed hidden right-0 w-60 h-full px-4 pt-6 bg-white shadow z-10 md:hidden"
+    >
+      <i
+        id="side-menu-close"
+        class="fa-solid fa-x mb-16 text-lg cursor-pointer"
+      ></i>
+      <ul class="flex flex-col gap-3">
+        <li>홈</li>
+        <li>소개</li>
+        <li>기술</li>
+        <li>프로젝트</li>
+        <li>연락처</li>
+      </ul>
+      <button class="w-full text-center mt-4 py-2 rounded-full bg-gray-200">
+        <i class="fa-solid fa-moon"></i>
+        <!-- <i class="fa-solid fa-sun"></i> -->
+      </button>
+    </aside>
+    <main
+      class="container justify-center items-center gap-4 w-xl max-w-4xl mx-auto px-6 py-12 md:w-full"
+    >
       <!-- Home Section -->
-      <section class="bg-red-200 h-60">
+      <section
+        class="w-full flex flex-col items-center justify-center gap-2 mx-auto"
+      >
         <!-- Gravatar -->
-        <img src="" alt="Gravatar 아이콘 " />
-
-        <h1></h1>
-        <h3></h3>
-        <p></p>
+        <img
+          id="gravatar-image"
+          src="https://gravatar.com/fanyoung50d1e15ebe"
+          class="border-white border-2 rounded-full w-52 h-52 mb-4"
+          alt="my gravatar profile avatar icon"
+        />
+        <h1 class="text-4xl font-bold dark:text-white">전제스</h1>
+        <h3 class="text-xl dark:text-white">그냥 개발자</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-center">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
+          quidem labore autem totam expedita sunt magni saepe, dignissimos ipsam
+          inventore culpa dolorem quaerat deleniti aperiam deserunt, ipsum
+          possimus cumque eius.
+        </p>
       </section>
       <!-- About Section -->
-      <section class="bg-yellow-200 h-60">
-        <h2 class="text-3xl font-bold mb-6">소개</h2>
+      <section class="flex flex-col gap-5">
+        <h2 class="text-3xl font-bold">소개</h2>
+        <div class="bg-gray-200 p-6 rounded-xl shadow-xl">
+          <h3 class="text-xl font-bold mb-4">
+            <i class="fa-solid fa-graduation-cap"></i> 경력
+          </h3>
+          <ul class="">
+            <li>
+              <i class="fa-solid fa-arrow-pointer"></i> 2021.01 ~ 현재: 개발자
+            </li>
+            <li>
+              <i class="fa-solid fa-arrow-pointer"></i> 2019.01 ~ 2020.12:
+              대학생
+            </li>
+          </ul>
+        </div>
+        <div class="bg-gray-200 p-6 rounded-xl shadow-xl">
+          <h3 class="text-xl font-bold mb-4">
+            <i class="fa-solid fa-laptop"></i> 자격증
+          </h3>
+          <ul class="">
+            <li>
+              <i class="fa-solid fa-arrow-pointer"></i> 2021.01 ~ 현재: 개발자
+            </li>
+            <li>
+              <i class="fa-solid fa-arrow-pointer"></i> 2019.01 ~ 2020.12:
+              대학생
+            </li>
+          </ul>
+        </div>
       </section>
-      <section class=""></section>
+      <section id="section-skills" class="">
+        <h2 class="text-3xl font-bold mb-6">기술</h2>
+        <div class="grid grid-cols-2 gap-3">
+          <div
+            class="flex flex-col items-center bg-gray-100 dark:bg-gray-800 shadow-md rounded-lg p-4 hover:scale-105 transition-transform duration-300"
+          >
+            <i class="fa-brands fa-html5 text-4xl text-red-500 mb-1"></i>
+            <h3 class="text-lg font-semibold">HTML5</h3>
+          </div>
+          <div
+            class="flex flex-col items-center bg-gray-100 dark:bg-gray-800 shadow-md rounded-lg p-4 hover:scale-105 transition-transform duration-300"
+          >
+            <i class="fa-brands fa-css3-alt text-4xl text-blue-500 mb-1"></i>
+            <h3 class="text-lg font-semibold">CSS3</h3>
+          </div>
+          <div
+            class="flex flex-col items-center bg-gray-100 dark:bg-gray-800 shadow-md rounded-lg p-4 hover:scale-105 transition-transform duration-300"
+          >
+            <i class="fa-brands fa-js text-4xl text-yellow-400 mb-1"></i>
+            <h3 class="text-lg font-semibold">JavaScript</h3>
+          </div>
+          <div
+            class="flex flex-col items-center bg-gray-100 dark:bg-gray-800 shadow-md rounded-lg p-4 hover:scale-105 transition-transform duration-300"
+          >
+            <i class="fa-brands fa-react text-4xl text-blue-400 mb-1"></i>
+            <h3 class="text-lg font-semibold">React</h3>
+          </div>
+          <div
+            class="flex flex-col items-center bg-gray-100 dark:bg-gray-800 shadow-md rounded-lg p-4 hover:scale-105 transition-transform duration-300"
+          >
+            <i class="fa-brands fa-vuejs text-4xl text-green-400 mb-1"></i>
+            <h3 class="text-lg font-semibold">Vue.js</h3>
+          </div>
+          <div
+            class="flex flex-col items-center bg-gray-100 dark:bg-gray-800 shadow-md rounded-lg p-4 hover:scale-105 transition-transform duration-300"
+          >
+            <i class="fa-brands fa-node text-4xl text-green-500 mb-1"></i>
+            <h3 class="text-lg font-semibold">Node.js</h3>
+          </div>
+        </div>
+      </section>
+      <section id="section-projects" class="">
+        <h2 class="text-3xl font-bold mb-6">진행 프로젝트</h2>
+        <div class="grid grid-cols-1 md:grid-cols2">
+          <div class="w-full h-20 bg-pink-200">
+            <img src="" alt="" />
+            <div class="bg-">
+              <h1></h1>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="">
+            <img src="" alt="" />
+            <div class="">
+              <h1></h1>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="">
+            <img src="" alt="" />
+            <div class="">
+              <h1></h1>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="">
+            <img src="" alt="" />
+            <div class="">
+              <h1></h1>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="">
+            <img src="" alt="" />
+            <div class="">
+              <h1></h1>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="">
+            <img src="" alt="" />
+            <div class="">
+              <h1></h1>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-links" class="">
+        <h2 class="text-3xl font-bold mb-6">연락처</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <a
+            href="#"
+            target="_blank"
+            class="dark:text-gray-300 flex items-center space-x-2 text-gray-600 hover:text-blue-500 transition-colors"
+          >
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a
+            href="#"
+            target="_blank"
+            class="dark:text-gray-300 flex items-center space-x-2 text-gray-600 hover:text-blue-500 transition-colors"
+          >
+            <i class="fa-brands fa-youtube"></i>
+            <span>Youtube</span>
+          </a>
+          <a
+            href="#"
+            target="_blank"
+            class="dark:text-gray-300 flex items-center space-x-2 text-gray-600 hover:text-blue-500 transition-colors"
+          >
+            <i class="fa-brands fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <a
+            href="#"
+            target="_blank"
+            class="dark:text-gray-300 flex items-center space-x-2 text-gray-600 hover:text-blue-500 transition-colors"
+          >
+            <i class="fa-regular fa-envelope"></i>
+            <span>grooveturtle29@gmail.com</span>
+          </a>
+        </div>
+      </section>
     </main>
-    <footer class="bg-gray-400 w-full h-20"></footer>
+    <footer class="flex justify-center items-center bg-gray-200 w-full h-20">
+      © 2024 전제스. All rights reserved.
+    </footer>
   </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hashedEmail = CryptoJS.SHA256('grooveturtle29@gmail.com');
+      const gravatarUrl = `https://www.gravatar.com/avatar/${hashedEmail}?s=200`;
+      document.getElementById('gravatar-image').src = gravatarUrl;
+    });
+
+    const header = document.querySelector('header');
+    const aside = document.querySelector('aside');
+    const main = document.querySelector('main');
+    const footer = document.querySelector('footer');
+
+    header.querySelector('#side-menu-open').addEventListener('click', () => {
+      if (aside.classList.contains('hidden')) aside.classList.remove('hidden');
+    });
+
+    aside.querySelector('#side-menu-close').addEventListener('click', () => {
+      if (!aside.classList.contains('hidden')) aside.classList.add('hidden');
+    });
+  </script>
 </html>
