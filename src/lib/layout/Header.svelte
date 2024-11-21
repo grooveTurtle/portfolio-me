@@ -1,6 +1,6 @@
 <script>
+  import { sideMenuOpen } from '$lib/store';
   let { menu } = $props();
-  $inspect(menu);
 </script>
 
 <header
@@ -25,6 +25,7 @@
     <i
       id="side-menu-open"
       class="fa-solid fa-bars text-2xl cursor-pointer dark:text-white md:hidden"
+      onclick={() => ($sideMenuOpen = !$sideMenuOpen)}
     ></i>
   </nav>
 </header>

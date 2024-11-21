@@ -1,10 +1,17 @@
 <script>
+  import { sideMenuOpen } from '$lib/store';
+
   let { menu } = $props();
-  $inspect(menu);
 </script>
 
-<aside class="fixed hidden right-0 w-60 h-full px-4 pt-6 bg-white shadow z-10">
-  <i id="side-menu-close" class="fa-solid fa-x mb-16 text-lg cursor-pointer"
+<aside
+  class="fixed right-0 w-60 h-full px-4 pt-6 bg-white shadow z-10"
+  class:hidden={!$sideMenuOpen}
+>
+  <i
+    id="side-menu-close"
+    class="fa-solid fa-x mb-16 text-lg cursor-pointer"
+    onclick={() => ($sideMenuOpen = false)}
   ></i>
   <ul class="flex flex-col gap-3">
     {#each Object.entries(menu) as [target, text]}
