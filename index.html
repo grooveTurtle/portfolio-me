@@ -20,12 +20,26 @@
     <header
       class="fixed w-full h-[72px] px-4 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md"
     >
-      <nav class="flex h-full justify-between items-center">
+      <nav class="flex w-full h-full justify-between items-center">
         <div class="flex items-center gap-4">
           <h1 class="text-2xl font-bold dark:text-white">전제스</h1>
           <span class="text-sm text-gray-400 dark:text-gray-200"
             >웹 개발자</span
           >
+        </div>
+        <!-- FIXME: 메뉴 공통화 -->
+        <div class="hidden md:flex md:justify-center md:items-center md:gap-3">
+          <ul class="flex gap-3 items-center">
+            <li><a href="#section-home">홈</a></li>
+            <li><a href="#section-about">소개</a></li>
+            <li><a href="#section-skills">기술</a></li>
+            <li><a href="#section-projects">프로젝트</a></li>
+            <li><a href="#section-home">연락처</a></li>
+          </ul>
+          <button class="text-center py-2 w-10 rounded-full bg-gray-200">
+            <i class="fa-solid fa-moon"></i>
+            <!-- <i class="fa-solid fa-sun"></i> -->
+          </button>
         </div>
         <i
           id="side-menu-open"
@@ -40,6 +54,7 @@
         id="side-menu-close"
         class="fa-solid fa-x mb-16 text-lg cursor-pointer"
       ></i>
+      <!-- FIXME: 메뉴 공통화 -->
       <ul class="flex flex-col gap-3">
         <li>홈</li>
         <li>소개</li>
@@ -210,9 +225,8 @@
           </div>
         </div>
       </section>
-      <section id="section-links" class="w-full">
-        <h2 class="text-3xl font-bold mb-6">연락처</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <section id="section-links" class="w-full mb-20">
+        <div class="grid grid-cols-1 place-items-center md:grid-cols-2 gap-4">
           <a
             href="#"
             target="_blank"
